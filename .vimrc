@@ -1,4 +1,10 @@
+execute pathogen#infect()
+
 syntax on
+syntax enable
+
+set background=dark
+colorscheme solarized
 
 set cursorline
 set number
