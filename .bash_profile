@@ -7,10 +7,13 @@ export NVM_DIR="/Users/tyler/.nvm"
 
 # aliases
 alias c='clear'
-alias ls='ls -AGhlp'
 alias sickbeard='python ~/Sick-Beard/sickbeard.py'
 alias proj='cd ~/proj'
 
+export CLICOLOR=true
+export CLICOLOR_FORCE=true
+export FIGNORE="DS_STORE:$FIGNORE"
+function ll { ls -AGhlp $@ | grep -v .DS_Store; }
 
 echo -e ''
 echo -e 'Welcome back, Tyler.'
