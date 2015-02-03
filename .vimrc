@@ -21,7 +21,7 @@ set showmode			        " Show current mode at the bottom
 set hlsearch 			        " Highlight search results
 set ignorecase			        " Ignore case when search
 set incsearch			        " Find the next match as you type
-set smartcase			        " Don't ingore case if you type uppercase 
+set smartcase			        " Don't ignore case if you type uppercase 
 
 " Indentation
 set ai				            " Auto-indent
