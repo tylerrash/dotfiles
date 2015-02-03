@@ -33,7 +33,7 @@ set tabstop=4			        " 1 tab = 4 spaces
 
 " Status line 
 set laststatus=2		        " Always show the statusline
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h%=Line:\ %l/%L\ \ Column:\ %c\ 
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h%=L:\ %l/%L\ \ C:\ %c\ 
 
 " Colors, layout, etc.
 set background=dark
