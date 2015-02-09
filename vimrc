@@ -4,7 +4,8 @@ set nocompatible
 
 " Load Pathogen plugins
 execute pathogen#infect()
- 
+
+
 " ============================================================================== 
 " General config
 " ============================================================================== 
@@ -134,3 +135,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " Open NERDtree
 map <leader>n :NERDTreeTabsToggle<CR>
+
+" ==============================================================================
+" UltiSnips
+" ==============================================================================
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
