@@ -4,8 +4,10 @@ set nocompatible
 
 " Load Pathogen plugins
 execute pathogen#infect()
-
-" General config ===============================================================
+ 
+" ============================================================================== 
+" General config
+" ============================================================================== 
 
 set autoread			        " Auto-read a file that is changed outside
 set backspace=eol,start,indent	" Allow backspace in insert mode
@@ -57,7 +59,9 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-" Custom leader commands  ======================================================
+" ==============================================================================
+" Custom leader commands
+" ==============================================================================
 
 " Set leader key to ,
 let mapleader = ","		
@@ -74,7 +78,9 @@ map <leader>tt :tabnext<cr>
 " Clear search result higlighting
 map <leader>h :noh<cr>
 
-" Remap commands ===============================================================
+" ==============================================================================
+" Remap commands
+" ============================================================================== 
 
 " Back to normal mode
 imap jj <Esc>
@@ -103,7 +109,9 @@ nmap <CR> o<Esc>
 " Open help in a new tab
 :cabbrev help tab help
 
-" File types ===================================================================
+" ==============================================================================
+" File types
+" ==============================================================================
 
 filetype plugin on		    " Detect file type
 
@@ -115,7 +123,9 @@ autocmd Filetype html setlocal ts=4 sw=4 expandtab
 autocmd Filetype jade setlocal ts=4 sw=4 expandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 expandtab
 
-" NERDtree =====================================================================
+" ==============================================================================
+" NERDtree
+" ==============================================================================
 
 " Open NERDtree when vim starts
 autocmd StdinReadPre * let s:std_in=1
