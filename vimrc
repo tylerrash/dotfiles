@@ -9,40 +9,38 @@ execute pathogen#infect()
 " General config
 " ============================================================================== 
 
-set autoread			        " Auto-read a file that is changed outside
-set backspace=eol,start,indent	" Allow backspace in insert mode
-set clipboard=unnamed 		    " Access system clipboard
-set history=1000		        " Store 1000 cmdline commands in history
-set mat=2			            " Tenths of a second to blink when matching brackets
-set scrolloff=5 		        " Keep at least 5 lines above/below
-set showcmd			            " Show incomplete commands at the bottom
-set showmatch			        " Show matching brackets
-set showmode			        " Show current mode at the bottom
+set autoread                    " Auto-read a file that is changed outside
+set backspace=eol,start,indent  " Allow backspace in insert mode
+set clipboard=unnamed           " Access system clipboard
+set history=1000                " Store 1000 cmdline commands in history
+set mat=2                       " Tenths of a second to blink when matching brackets
+set scrolloff=5                 " Keep at least 5 lines above/below
+set showcmd                     " Show incomplete commands at the bottom
+set showmatch                   " Show matching brackets
+set showmode                    " Show current mode at the bottom
 
 " Search
-set hlsearch 			        " Highlight search results
-set ignorecase			        " Ignore case when search
-set incsearch			        " Find the next match as you type
-set smartcase			        " Don't ignore case if you type uppercase 
+set hlsearch                    " Highlight search results
+set ignorecase                  " Ignore case when search
+set incsearch                   " Find the next match as you type
+set smartcase                   " Don't ignore case if you type uppercase 
 
 " Indentation
-set ai				            " Auto-indent
-set expandtab			        " Use spaces instead of tabs
-set shiftwidth=4		        " 1 tab = 4 spaces
-set si				            " Smart indent
-set smarttab
-set tabstop=4			        " 1 tab = 4 spaces
+set ai                          " Auto-indent
+set expandtab                   " Use spaces instead of tabs
+set shiftwidth=4                " 1 tab = 4 spaces
+set tabstop=4                   " 1 tab = 4 spaces
 
 " Status line 
-set laststatus=2		        " Always show the statusline
+set laststatus=2                " Always show the statusline
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h%=L:\ %l/%L\ \ C:\ %c\ 
 
 " Colors, layout, etc.
 set background=dark
-set cursorline			        " Highlight current line
-set number			            " Show line numbers
-colorscheme solarized		    " Color scheme
-syntax on 			            " Enable syntax highlighting
+set cursorline                  " Highlight current line
+set number                      " Show line numbers
+colorscheme solarized           " Color scheme
+syntax on                       " Enable syntax highlighting
 
 " Turn off swap files
 set noswapfile
@@ -89,7 +87,7 @@ imap jj <Esc>
 nnoremap Q <nop>
 
 " Quick yank to the end of the line
-nnoremap Y y$               
+nnoremap Y y$
 
 " Avoid shift for getting to the command line
 nnoremap ; :
@@ -113,7 +111,7 @@ nmap <CR> o<Esc>
 " File types
 " ==============================================================================
 
-filetype plugin on		    " Detect file type
+filetype plugin on              " Detect file type
 
 autocmd BufRead,BufNewFile *.less set filetype=css
 
