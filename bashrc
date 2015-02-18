@@ -14,6 +14,7 @@ alias gb='git branch '
 alias gh='git hist '
 alias go='git checkout '
 alias gp='git push '
+alias gpom='git push origin master'
 alias gs='git status '
 
 function ll { ls -AGhlp $@ | grep -v .DS_Store; }
