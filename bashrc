@@ -5,6 +5,13 @@ PS1='\[\e[0;36m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\
 alias c='clear'
 alias proj='cd ~/proj'
 
+# git aliases
+alias ga='git add '
+alias gc='git commit '
+alias gb='git branch '
+alias go='git checkout '
+alias gs='git status '
+
 function ll { ls -AGhlp $@ | grep -v .DS_Store; }
 
 export CLICOLOR=true
