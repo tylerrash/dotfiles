@@ -10,6 +10,7 @@ alias ga='git add '
 alias gc='git commit '
 alias gb='git branch '
 alias go='git checkout '
+alias gp='git push '
 alias gs='git status '
 
 function ll { ls -AGhlp $@ | grep -v .DS_Store; }
