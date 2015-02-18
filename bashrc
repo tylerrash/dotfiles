@@ -7,8 +7,10 @@ alias proj='cd ~/proj'
 
 # git aliases
 alias ga='git add '
+alias gd='git diff '
 alias gc='git commit '
 alias gb='git branch '
+alias gh='git hist '
 alias go='git checkout '
 alias gp='git push '
 alias gs='git status '
