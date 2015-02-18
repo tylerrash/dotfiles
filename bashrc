@@ -4,6 +4,7 @@ PS1='\[\e[0;36m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\
 # aliases
 alias c='clear'
 alias proj='cd ~/proj'
+alias vim='vim -p '
 
 # git aliases
 alias ga='git add '
