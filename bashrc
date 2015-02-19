@@ -7,6 +7,15 @@ alias grep='grep --color=auto'
 alias proj='cd ~/proj'
 alias vim='vim -p '
 
+# navigation aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias dl='cd ~/Downloads'
+alias dt='cd ~/Desktop'
+alias p='cd ~/projects'
+
 # git aliases
 alias ga='git add '
 alias gd='git diff '
@@ -18,6 +27,10 @@ alias gp='git push '
 alias gpom='git push origin master'
 alias gs='git status '
 
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Better ls
 function ll { ls -AGhlp $@ | grep -v .DS_Store; }
 
 export CLICOLOR=true
