@@ -29,6 +29,7 @@ export EDITOR='vim'
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+export PATH="/usr/local/bin:$PATH"
 export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
 export PATH=/usr/local/Cellar/ruby/2.1.4/bin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
