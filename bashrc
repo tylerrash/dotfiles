@@ -16,6 +16,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
+alias ma='cd ~/mail_app'
 alias p='cd ~/projects'
 
 # git aliases
