@@ -5,6 +5,9 @@ set nocompatible
 " Load Pathogen plugins
 execute pathogen#infect()
 
+" Load powerline
+" source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
+
 
 " ============================================================================== 
 " General config
