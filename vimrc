@@ -18,7 +18,7 @@ set backspace=eol,start,indent  " Allow backspace in insert mode
 set clipboard=unnamed           " Access system clipboard
 set history=1000                " Store 1000 cmdline commands in history
 set mat=2                       " Tenths of a second to blink when matching brackets
-set scrolloff=5                 " Keep at least 5 lines above/below
+set scrolloff=10                " Keep at least 5 lines above/below
 set showcmd                     " Show incomplete commands at the bottom
 set showmatch                   " Show matching brackets
 set showmode                    " Show current mode at the bottom
@@ -43,8 +43,11 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h%=L:\ %l/%L\ \ C:\ %c\
 set background=dark
 set cursorline                  " Highlight current line
 set number                      " Show line numbers
-colorscheme solarized           " Color scheme
 syntax on                       " Enable syntax highlighting
+
+" Solarized stuff
+colorscheme solarized
+let g:solarized_termtrans = 1
 
 " Turn off swap files
 set noswapfile
