@@ -6,6 +6,7 @@ alias c='clear'
 alias grep='grep --color=auto'
 alias proj='cd ~/proj'
 alias vim='vim -p '
+alias steam='wine .wine/drive_c/Program\ Files/Steam/Steam.exe'
 
 # navigation aliases
 alias ..='cd ..'
