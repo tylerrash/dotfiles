@@ -7,6 +7,7 @@ alias grep='grep --color=auto'
 alias proj='cd ~/proj'
 alias vim='vim -p '
 alias steam='wine .wine/drive_c/Program\ Files/Steam/Steam.exe'
+alias g='git'
 
 # navigation aliases
 alias ..='cd ..'
@@ -17,17 +18,6 @@ alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
 alias ma='cd ~/mail_app'
 alias p='cd ~/projects'
-
-# git aliases
-alias ga='git add '
-alias gd='git diff '
-alias gc='git commit '
-alias gb='git branch '
-alias gh='git hist '
-alias go='git checkout '
-alias gp='git push '
-alias gpom='git push origin master'
-alias gs='git status '
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
@@ -51,3 +41,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 export PATH=$PATH:~/tools
+
+# git completion
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
