@@ -8,7 +8,7 @@ execute pathogen#infect()
 " Load powerline
 " source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
 
-
+"
 " ============================================================================== 
 " General config
 " ============================================================================== 
@@ -126,6 +126,7 @@ autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype css setlocal ts=4 sw=4 expandtab
 autocmd Filetype html setlocal ts=4 sw=4 expandtab
 autocmd Filetype jade setlocal ts=4 sw=4 expandtab
+autocmd Filetype phtml setlocal ts=4 sw=4 expandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 expandtab
 
 " ==============================================================================
