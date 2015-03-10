@@ -1,11 +1,27 @@
 [alias]
-    hist = log --pretty=format:\"%h %ad | %an >> %s%d\" --date=short
-[user]
-	name = Tyler Rash
-	email = tyler.rash@bronto.com
+    a = add
+    b = branch
+    c = commit
+    h = log --pretty=format:\"%h %ad | %an >> %s%d\" --date=short
+    o = checkout
+    p = pull
+    r = remote
+    s = status
+    w = whatchanged
 [color]
 	ui = true
 	ui = false
 	ui = true
 [advice]
 	statusHints = false
+[diff]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true
+[include]
+    path = ~/.gituser
