@@ -31,6 +31,8 @@ export FIGNORE="DS_STORE:$FIGNORE"
 
 export EDITOR='vim'
 
+export GREP_OPTIONS='--exclude=*bundle*'
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
