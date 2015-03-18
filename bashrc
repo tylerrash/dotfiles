@@ -40,7 +40,7 @@ export PATH=/usr/local/Cellar/ruby/2.1.4/bin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-export PATH=$PATH:~/tools
+PATH=${PATH}:$(find ~/tools -type d | tr '\n' ':' | sed 's/:$//')
 
 # git completion
 if [ -f ~/.git-completion.bash ]; then
