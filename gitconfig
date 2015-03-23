@@ -10,8 +10,6 @@
     w = whatchanged
 [color]
 	ui = true
-	ui = false
-	ui = true
 [advice]
 	statusHints = false
 [diff]
