@@ -25,6 +25,11 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # Better ls
 function ll { ls -AGhlp $@ | grep -v .DS_Store; }
 
+# Query Google
+goog() {
+    open -a '/Applications/Google Chrome.app' "http://google.com#q=${1}"
+}
+
 export CLICOLOR=true
 export CLICOLOR_FORCE=true
 export FIGNORE="DS_STORE:$FIGNORE"
