@@ -1,0 +1,2 @@
+echo bronto
+alias segments="~/mail_app/views/Mail/Segments/scripts"

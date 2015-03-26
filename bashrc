@@ -1,6 +1,10 @@
 # prompt
 PS1='\[\e[0;36m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 
+include() {
+    [[ -f "$1" ]] && source "$1"
+}
+
 # aliases
 alias c='clear'
 alias grep='grep --color=auto'
@@ -18,6 +22,8 @@ alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
 alias ma='cd ~/mail_app'
 alias p='cd ~/projects'
+
+include "~/.bronto_aliases"
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
