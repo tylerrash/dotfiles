@@ -114,6 +114,12 @@ nmap <CR> o<Esc>
 " Open help in a new tab
 :cabbrev help tab help
 
+" Better split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-L> <C-W><C-L>
+
 " ==============================================================================
 " File types
 " ==============================================================================
