@@ -60,4 +60,5 @@ if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
 
-. /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+# powerline
+# . /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
