@@ -2,11 +2,16 @@
     a = add
     b = branch
     c = commit
-    h = log --pretty=format:\"%h %ad | %an >> %s%d\" --date=short
+    ll = log --pretty=format:\"%h %ad %Cblue%an %C(yellow)%s%d\" --decorate --date=relative
     o = checkout
     p = pull
-    r = remote
+    r = remote -v
     s = status
+    sh = stash
+    sha = stash apply
+    shl = stash list
+    shp = stash pop
+    u = branch --no-merge master
     w = whatchanged
 [color]
 	ui = true
