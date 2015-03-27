@@ -1,0 +1,7 @@
+[alias]
+    j = "config --get-regexp alias.jira"
+    jc = "!f() { if [ $# -eq 0 ]; then echo \"You must specify the JIRA ticket.\"; exit 1; fi; git checkout master && git pull origin master && git checkout -b `echo JIRA/$1 | awk '{print toupper($0)}'`; }; f"
+    jl = "!f() { git branch | grep JIRA | sed 's/JIRA\\///g'; }; f"
+    js = "!f() { if [ $# -eq 0 ]; then echo \"You must specify the JIRA ticket.\"; exit 1; fi; git checkout `echo JIRA/$1 | awk '{print toupper($0)}'`; }; f"
+    jp = "!f() { JIRA=`git branch | grep ^* | sed s/\\*\\ //`; if [[ "$JIRA" != *JIRA* ]]; then echo \"You're not on a JIRA branch.\"; exit 1; fi; git push origin $JIRA; }; f"
+    jm = "!f() { JIRA=`git branch | grep ^* | sed s/\\*\\ //`; if [[ "$JIRA" != *JIRA* ]]; then echo \"You're not on a JIRA branch.\"; exit 1; fi; git pull origin $JIRA && git checkout master && git pull origin master && git merge $JIRA --no-ff -m \"Merging $JIRA into master\" && git push origin master;}; f"
