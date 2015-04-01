@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Creates a new window with panes laid out to my liking
+tmux new-window -n "$1"
+tmux split-window -h
+tmux split-window -v
