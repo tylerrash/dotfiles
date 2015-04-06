@@ -127,6 +127,7 @@ nnoremap <C-L> <C-W><C-L>
 filetype plugin on              " Detect file type
 
 autocmd BufRead,BufNewFile *.less set filetype=css
+autocmd BufRead,BufNewFile *.ts set filetype=javascript
 
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype css setlocal ts=4 sw=4 expandtab
