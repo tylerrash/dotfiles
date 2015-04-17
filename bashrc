@@ -28,6 +28,13 @@ include "~/.bronto_aliases"
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
+# tmux colors
+function tmux-colors {
+    for i in {0..255} ; do
+        printf "\x1b[38;5;${i}mcolour${i}\n"
+    done
+}
+
 # Better ls
 function ll { ls -AGhlp $@ | grep -v .DS_Store; }
 
