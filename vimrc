@@ -8,7 +8,6 @@ execute pathogen#infect()
 " Load powerline
 " source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
 
-"
 " ============================================================================== 
 " General config
 " ============================================================================== 
@@ -35,10 +34,6 @@ set expandtab                   " Use spaces instead of tabs
 set shiftwidth=4                " 1 tab = 4 spaces
 set tabstop=4                   " 1 tab = 4 spaces
 
-" Status line 
-set laststatus=2                " Always show the statusline
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h%=L:\ %l/%L\ \ C:\ %c\ 
-
 " Colors, layout, etc.
 set background=dark
 set cursorline                  " Highlight current line
@@ -64,6 +59,31 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
+" Status line 
+set laststatus=2                " Always show the statusline
+set statusline=\ %F             " File path
+set statusline+=\ %m            " Modified flag
+set statusline+=%h%=L:\ %l/%L   " Line number
+set statusline+=\ \ C:\ %c\     " Column number
+
+" Change status line color with mode
+function! InsertStatusLineColor(mode)
+    if a:mode == 'i'
+        hi statusline ctermfg=red ctermbg=white
+    elseif a:mode == 'r'
+        hi statusline ctermfg=blue ctermbg=white
+    else
+        hi statusline ctermfg=0 ctermbg=grey
+    endif
+endfunction
+
+au InsertEnter * call InsertStatusLineColor(v:insertmode)
+au InsertChange * call InsertStatusLineColor(v:insertmode)
+au InsertLeave * hi statusline ctermfg=0 ctermbg=grey
+
+" Default statusline when entering Vim
+hi statusline ctermfg=0 ctermbg=grey
+
 " ==============================================================================
 " Custom leader commands
 " ==============================================================================
@@ -74,7 +94,7 @@ let g:mapleader = ","
 
 " Tab management
 map <leader>tc :tabclose<cr>
-map <leader>te :tabedit
+map <leader>te :tabedit<Space>
 map <leader>tm :tabmove
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
