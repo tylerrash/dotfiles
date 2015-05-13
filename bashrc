@@ -23,7 +23,7 @@ alias dt='cd ~/Desktop'
 alias ma='cd ~/mail_app'
 alias p='cd ~/projects'
 
-include "~/.bronto_aliases"
+for f in ./.bash_includes/*; do source $f; done
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
