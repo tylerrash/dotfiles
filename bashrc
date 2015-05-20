@@ -23,8 +23,6 @@ alias dt='cd ~/Desktop'
 alias ma='cd ~/mail_app'
 alias p='cd ~/projects'
 
-for f in ./.bash_includes/*; do source $f; done
-
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
@@ -40,7 +38,8 @@ function ll { ls -AGhlp $@ | grep -v .DS_Store; }
 
 # Query Google
 goog() {
-    open -a '/Applications/Google Chrome.app' "http://google.com#q=${1}"
+    echo "http://google.com#q=$*"
+    open -a '/Applications/Google Chrome.app' "http://google.com#q=$*"
 }
 
 export CLICOLOR=true
