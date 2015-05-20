@@ -27,5 +27,5 @@
 	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
 	trustExitCode = true
 [include]
-    path = ~/.gituser
-    path = ~/.git_jira
+    path = ~/.git-user
+    path = ~/.git-jira
