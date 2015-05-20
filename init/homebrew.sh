@@ -8,8 +8,12 @@ packages=(
     'tree'
 )
 
-echo Installing Homebrew...
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if brew -v >/dev/null 2>&1; then
+    echo Homebrew is already installed.
+else
+    echo Installing Homebrew...
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
 echo Installing Homebrew packages...
 
