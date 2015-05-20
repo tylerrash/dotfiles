@@ -8,15 +8,18 @@ packages=(
     'tree'
 )
 
-echo 'Installing Homebrew...'
+echo Installing Homebrew...
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-echo 'Installing Homebrew packages...'
+echo Installing Homebrew packages...
 
 for package in ${packages[@]}
 do
-    echo 'Installing' $package
+    echo "Installing ${package}..."
     brew install $package
 done
 
-echo 'Homebrew setup complete!'
+echo Installing cask...
+brew install caskroom/cask/brew-cask
+
+echo Homebrew setup complete!
