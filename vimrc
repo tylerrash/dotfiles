@@ -84,6 +84,11 @@ au InsertLeave * hi statusline ctermfg=0 ctermbg=grey
 " Default statusline when entering Vim
 hi statusline ctermfg=0 ctermbg=grey
 
+" TabLine plug-in
+hi TabLine ctermfg=Black ctermbg=Green cterm=NONE
+hi TabLineFill ctermfg=Black ctermbg=Green cterm=NONE
+hi TabLineSel ctermfg=White ctermbg=DarkBlue cterm=NONE
+
 " ==============================================================================
 " Custom leader commands
 " ==============================================================================
@@ -143,6 +148,11 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-L> <C-W><C-L>
 
+" Tab navigation
+nnoremap <S-l> :tabn<CR>
+nnoremap <S-h> :tabp<CR>
+
+
 " ==============================================================================
 " Spell check
 " ==============================================================================
@@ -189,6 +199,7 @@ let g:ctrlp_map = "<c-p>"
 " UltiSnips
 " ==============================================================================
 
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
