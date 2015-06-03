@@ -94,22 +94,24 @@ hi TabLineSel ctermfg=White ctermbg=DarkBlue cterm=NONE
 " ==============================================================================
 
 " Set leader key to ,
-let mapleader = ","		
-let g:mapleader = ","
+let mapleader = "\<Space>"
 
 " Tab management
-map <leader>tc :tabclose<cr>
-map <leader>te :tabedit<Space>
-map <leader>tm :tabmove
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tt :tabnext<cr>
+map <Leader>tc :tabclose<cr>
+map <Leader>te :tabedit<Space>
+map <Leader>tm :tabmove
+map <Leader>tn :tabnew<cr>
+map <Leader>to :tabonly<cr>
+map <Leader>tt :tabnext<cr>
 
 " Clear search result higlighting
 map <leader>h :noh<cr>
 
 " Break line at 100 characters
 map <Leader>b 100<Bar>F<Space>i<CR>jj
+
+" Lint PHP file
+map <Leader>p :!php -l %<CR>
 
 " ==============================================================================
 " Remap commands
@@ -163,7 +165,8 @@ nnoremap <S-h> :tabp<CR>
 " File types
 " ==============================================================================
 
-filetype plugin on              " Detect file type
+" Detect file type
+filetype plugin on
 
 autocmd BufRead,BufNewFile *.less set filetype=css
 autocmd BufRead,BufNewFile *.ts set filetype=javascript
@@ -187,7 +190,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Open NERDtree
-map <leader>n :NERDTreeTabsToggle<CR>
+map <Leader><Leader> :NERDTreeTabsToggle<CR>
 
 " ==============================================================================
 " CtrlP
