@@ -1,3 +1,5 @@
+source ~/.vim/vdebug-config
+
 " Use vim settings, rathern than vi settings
 " This must be first, because it changes other options as a side effect
 set nocompatible
@@ -49,6 +51,43 @@ set noswapfile
 set nobackup
 set nowb
 
+" Folding
+fu! CustomFoldText()
+    let fs = v:foldstart
+    let fe = v:foldend
+    let fl = v:foldlevel
+
+    while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+    endwhile
+
+    if fs > v:foldend 
+        let line = getline(v:foldstart)
+    else
+        let line = substitute(getline(fs), '\t', repeat('', &tabstop), 'g')
+    endif
+
+    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+    let foldSize = 1 + fe - fs
+    let foldSizeStr = " " . foldSize . " lines "
+    let lineCount = line("$")
+    let foldPct = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
+    let expansionStr = " " . repeat("-", w - strwidth(foldSizeStr.line.foldPct))
+
+    return line . expansionStr . foldSizeStr . foldPct
+endf
+
+set foldmethod=syntax
+set foldtext=CustomFoldText()
+set foldlevel=2
+
+hi Folded cterm=NONE ctermfg=0 ctermbg=NONE
+hi FoldColumn ctermbg=1 ctermfg=2
+
+" Don't screw up folds when inserting text that might affect them, until
+" leaving insert mode. Foldmethod is local to the window.
+autocmd InsertEnter * let w:last_fdm=&foldmethod | setlocal foldmethod=manual
+autocmd InsertLeave * let &l:foldmethod=w:last_fdm
+
 " Different cursors for insert vs normal mode
 " Cursor shapes: 0 = block, 1 = vertical bar, 2 = underline
 if exists('$TMUX')
@@ -97,8 +136,8 @@ hi TabLineSel ctermfg=White ctermbg=DarkBlue cterm=NONE
 let mapleader = "\<Space>"
 
 " Tab management
+map <Leader>e :tabedit<Space>
 map <Leader>tc :tabclose<cr>
-map <Leader>te :tabedit<Space>
 map <Leader>tm :tabmove
 map <Leader>tn :tabnew<cr>
 map <Leader>to :tabonly<cr>
@@ -153,7 +192,6 @@ nnoremap <C-L> <C-W><C-L>
 " Tab navigation
 nnoremap <S-l> :tabn<CR>
 nnoremap <S-h> :tabp<CR>
-
 
 " ==============================================================================
 " Spell check
