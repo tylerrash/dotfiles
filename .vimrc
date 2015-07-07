@@ -244,3 +244,12 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" ==============================================================================
+" Handy functions
+" ==============================================================================
+
+" Inserts a newline between tightly spaced JS object properties
+fu! FixObjectSpacing()
+    :%s/\(},\)\(\n\s*\/\*\*\)/\1\r\2
+endfu
