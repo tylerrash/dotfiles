@@ -8,6 +8,7 @@ packages=(
     'python'
     'tmux'
     'tree'
+    'wget'
 )
 
 if brew -v >/dev/null 2>&1; then
