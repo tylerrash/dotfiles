@@ -9,7 +9,7 @@ execute pathogen#infect()
 
 " Load powerline
 " source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
-
+ 
 " ============================================================================== 
 " General config
 " ============================================================================== 
@@ -32,6 +32,7 @@ set smartcase                   " Don't ignore case if you type uppercase
 
 " Indentation
 set ai                          " Auto-indent
+set si                          " Smart indent
 set expandtab                   " Use spaces instead of tabs
 set shiftwidth=4                " 1 tab = 4 spaces
 set tabstop=4                   " 1 tab = 4 spaces
@@ -50,6 +51,9 @@ let g:solarized_termtrans = 1
 set noswapfile
 set nobackup
 set nowb
+
+" Diff
+set diffopt=filler,vertical     " Display diffs side-by-side
 
 " Folding
 fu! CustomFoldText()
@@ -71,17 +75,16 @@ fu! CustomFoldText()
     let foldSizeStr = " " . foldSize . " lines "
     let lineCount = line("$")
     let foldPct = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
-    let expansionStr = " " . repeat("-", w - strwidth(foldSizeStr.line.foldPct))
+    let expansionStr = " " . repeat(".", w - strwidth(foldSizeStr.line.foldPct))
 
     return line . expansionStr . foldSizeStr . foldPct
 endf
 
+set foldlevel=2
 set foldmethod=syntax
 set foldtext=CustomFoldText()
-set foldlevel=2
 
 hi Folded cterm=NONE ctermfg=0 ctermbg=NONE
-hi FoldColumn ctermbg=1 ctermfg=2
 
 " Don't screw up folds when inserting text that might affect them, until
 " leaving insert mode. Foldmethod is local to the window.
@@ -102,7 +105,8 @@ endif
 set laststatus=2                " Always show the statusline
 set statusline=\ %F             " File path
 set statusline+=\ %m            " Modified flag
-set statusline+=%h%=L:\ %l/%L   " Line number
+set statusline+=%h%{fugitive#statusline()}
+set statusline+=%=L:\ %l/%L   " Line number
 set statusline+=\ \ C:\ %c\     " Column number
 
 " Change status line color with mode
@@ -132,8 +136,13 @@ hi TabLineSel ctermfg=White ctermbg=DarkBlue cterm=NONE
 " Custom leader commands
 " ==============================================================================
 
+" TODO: should these be nnoremap?
+
 " Set leader key to ,
 let mapleader = "\<Space>"
+
+" Reload .vimrc
+map <Leader>r :so $MYVIMRC<CR>
 
 " Tab management
 map <Leader>e :tabedit<Space>
@@ -151,6 +160,14 @@ map <Leader>b 100<Bar>F<Space>i<CR>jj
 
 " Lint PHP file
 map <Leader>p :!php -l %<CR>
+
+" Format JSON
+" map <Leader>j :execute '%!python -m json.tool' | w
+
+" Fugitive
+map <Leader>gb :Gblame<CR>
+map <Leader>gd :Gdiff<CR>
+map <Leader>gs :Gstatus<CR>
 
 " ==============================================================================
 " Remap commands
@@ -193,6 +210,9 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <S-l> :tabn<CR>
 nnoremap <S-h> :tabp<CR>
 
+" Easier recursive unfolding
+nnoremap zz zA
+
 " ==============================================================================
 " Spell check
 " ==============================================================================
@@ -228,7 +248,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Open NERDtree
-map <Leader><Leader> :NERDTreeTabsToggle<CR>
+map <Leader>n :NERDTreeTabsToggle<CR>
 
 " ==============================================================================
 " CtrlP
@@ -244,6 +264,24 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" ==============================================================================
+" Easy Motion
+" ==============================================================================
+
+" Disable default mappings
+let g:EasyMotion_do_mapping = 0
+
+" Case-insensitive
+let g:EasyMotion_smartcase = 1
+
+" Bi-directional find-motion
+nmap <Leader>s <Plug>(easymotion-s)
+
+hi EasyMotionTarget ctermbg=NONE ctermfg=3
+hi EasyMotionTarget2First ctermbg=NONE ctermfg=3
+hi EasyMotionTarget2Second ctermbg=NONE ctermfg=3
+hi EasyMotionShade ctermbg=NONE ctermfg=0
 
 " ==============================================================================
 " Handy functions
