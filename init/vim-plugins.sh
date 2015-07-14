@@ -16,7 +16,7 @@ plugins=(
 )
 
 mkdir -p ~/.vim/bundle
-cd ~/foobar
+cd ~/.vim/bundle
 
 for plugin in ${plugins[@]}
 do
