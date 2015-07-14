@@ -29,3 +29,6 @@
 [include]
     path = ~/.git-user
     path = ~/.git-jira
+[user]
+	email = tyler.rash@gmail.com
+	name = Tyler Rash
