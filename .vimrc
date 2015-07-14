@@ -165,9 +165,11 @@ map <Leader>p :!php -l %<CR>
 " map <Leader>j :execute '%!python -m json.tool' | w
 
 " Fugitive
+map <Leader>gc :Gcommit<CR>
 map <Leader>gb :Gblame<CR>
 map <Leader>gd :Gdiff<CR>
 map <Leader>gs :Gstatus<CR>
+map <Leader>gw :Gwrite<CR>
 
 " ==============================================================================
 " Remap commands
