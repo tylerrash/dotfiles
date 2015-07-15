@@ -3,6 +3,7 @@
 plugins=(
    'git@github.com:SirVer/ultisnips.git'
    'git@github.com:altercation/vim-colors-solarized.git'
+   'git@github.com:christoomey/vim-tmux-navigator.git'
    'git@github.com:easymotion/vim-easymotion.git'
    'git@github.com:ervandew/supertab.git'
    'git@github.com:jistr/vim-nerdtree-tabs.git'
