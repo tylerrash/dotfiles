@@ -194,20 +194,18 @@ vnoremap L g_
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
 
-" Better split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-L> <C-W><C-L>
-
-" Tab navigation
-" nnoremap <S-l> :tabn<CR>
-" nnoremap <S-h> :tabp<CR>
-
 " Buffer navigation
 nnoremap <S-L> :bn<CR>:redraw<CR>:ls<CR>
 nnoremap <S-H> :bp<CR>:redraw<CR>:ls<CR>
 nmap <Leader><Leader> :ls<CR>
+
+" Navigation between vim splits and tmux panes
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-'> :TmuxNavigatePrevious<cr>
 
 " Easier recursive unfolding
 nnoremap zz zA
