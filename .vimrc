@@ -1,4 +1,4 @@
-source ~/.vim/vdebug-config
+" source ~/.vim/vdebug-config
 
 " Use vim settings, rathern than vi settings
 " This must be first, because it changes other options as a side effect
