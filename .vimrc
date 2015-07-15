@@ -55,6 +55,9 @@ set nowb
 " Diff
 set diffopt=filler,vertical     " Display diffs side-by-side
 
+" Buffers
+set hidden                      " Allow switching buffers without saving
+
 " Folding
 fu! CustomFoldText()
     let fs = v:foldstart
@@ -144,14 +147,6 @@ let mapleader = "\<Space>"
 " Reload .vimrc
 map <Leader>r :so $MYVIMRC<CR>
 
-" Tab management
-map <Leader>e :tabedit<Space>
-map <Leader>tc :tabclose<cr>
-map <Leader>tm :tabmove
-map <Leader>tn :tabnew<cr>
-map <Leader>to :tabonly<cr>
-map <Leader>tt :tabnext<cr>
-
 " Clear search result higlighting
 map <leader>h :noh<cr>
 
@@ -199,9 +194,6 @@ vnoremap L g_
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
 
-" Open help in a new tab
-:cabbrev help tab help
-
 " Better split navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -209,8 +201,13 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-L> <C-W><C-L>
 
 " Tab navigation
-nnoremap <S-l> :tabn<CR>
-nnoremap <S-h> :tabp<CR>
+" nnoremap <S-l> :tabn<CR>
+" nnoremap <S-h> :tabp<CR>
+
+" Buffer navigation
+nnoremap <S-L> :bn<CR>:redraw<CR>:ls<CR>
+nnoremap <S-H> :bp<CR>:redraw<CR>:ls<CR>
+nmap <Leader><Leader> :ls<CR>
 
 " Easier recursive unfolding
 nnoremap zz zA
@@ -243,14 +240,14 @@ autocmd Filetype javascript setlocal ts=4 sw=4 expandtab
 " ==============================================================================
 
 " Open NERDtree when vim starts
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Close vim when NERDtree is the only open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Open NERDtree
-map <Leader>n :NERDTreeTabsToggle<CR>
+" map <Leader>n :NERDTreeTabsToggle<CR>
 
 " ==============================================================================
 " CtrlP
