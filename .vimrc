@@ -153,11 +153,11 @@ map <leader>h :noh<cr>
 " Break line at 100 characters
 map <Leader>b 100<Bar>F<Space>i<CR>jj
 
-" Lint PHP file
-map <Leader>p :!php -l %<CR>
+" Copy to system clipboard
+map <Leader>y :w !pbcopy<CR><CR>
 
 " Format JSON
-" map <Leader>j :execute '%!python -m json.tool' | w
+map <Leader>j :execute '%!python -m json.tool' |
 
 " Fugitive
 map <Leader>gc :Gcommit<CR>
@@ -197,7 +197,7 @@ nmap <CR> o<Esc>
 " Buffer navigation
 nnoremap <S-L> :bn<CR>:redraw<CR>:ls<CR>
 nnoremap <S-H> :bp<CR>:redraw<CR>:ls<CR>
-nmap <Leader><Leader> :ls<CR>
+nmap <Leader><Tab> :b#<CR>
 
 " Navigation between vim splits and tmux panes
 let g:tmux_navigator_no_mappings = 1
