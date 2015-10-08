@@ -210,6 +210,10 @@ nnoremap <silent> <C-'> :TmuxNavigatePrevious<cr>
 " Easier recursive unfolding
 nnoremap zz zA
 
+" Easily move lines
+nnoremap <Up> :m-2<CR>==
+nnoremap <Down> :m+<CR>==
+
 " ==============================================================================
 " Spell check
 " ==============================================================================
