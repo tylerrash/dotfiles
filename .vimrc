@@ -215,7 +215,7 @@ nnoremap <Up> :m-2<CR>==
 nnoremap <Down> :m+<CR>==
 
 " ==============================================================================
-" Spell check
+" Auto-correct 
 " ==============================================================================
 
 :ab funciton function
@@ -283,6 +283,24 @@ hi EasyMotionTarget ctermbg=NONE ctermfg=3
 hi EasyMotionTarget2First ctermbg=NONE ctermfg=3
 hi EasyMotionTarget2Second ctermbg=NONE ctermfg=3
 hi EasyMotionShade ctermbg=NONE ctermfg=0
+
+" ==============================================================================
+" Syntastic
+" ==============================================================================
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
+let g:syntastic_javascript_checkers = ['eslint']
+
+map <Leader>en :lnext<CR>
+map <Leader>ep :lprevious<CR>
 
 " ==============================================================================
 " Handy functions
