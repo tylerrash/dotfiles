@@ -1,15 +1,9 @@
-" source ~/.vim/vdebug-config
-
-" Use vim settings, rathern than vi settings
 " This must be first, because it changes other options as a side effect
 set nocompatible
 
 " Load Pathogen plugins
 execute pathogen#infect()
 
-" Load powerline
-" source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
- 
 " ============================================================================== 
 " General config
 " ============================================================================== 
@@ -148,7 +142,7 @@ let mapleader = "\<Space>"
 map <Leader>r :so $MYVIMRC<CR>
 
 " Clear search result higlighting
-map <leader>h :noh<cr>
+map <leader>h :noh<CR>
 
 " Break line at 100 characters
 map <Leader>b 100<Bar>F<Space>i<CR>jj
@@ -201,11 +195,11 @@ nmap <Leader><Tab> :b#<CR>
 
 " Navigation between vim splits and tmux panes
 let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
-nnoremap <silent> <C-'> :TmuxNavigatePrevious<cr>
+nnoremap <silent> <C-H> :TmuxNavigateLeft<CR>
+nnoremap <silent> <C-J> :TmuxNavigateDown<CR>
+nnoremap <silent> <C-K> :TmuxNavigateUp<CR>
+nnoremap <silent> <C-L> :TmuxNavigateRight<CR>
+nnoremap <silent> <C-'> :TmuxNavigatePrevious<CR>
 
 " Easier recursive unfolding
 nnoremap zz zA
@@ -255,7 +249,7 @@ autocmd Filetype javascript setlocal ts=4 sw=4 expandtab
 " CtrlP
 " ==============================================================================
 
-let g:ctrlp_map = "<c-p>"
+let g:ctrlp_map = "<C-P>"
 
 " ==============================================================================
 " UltiSnips
