@@ -34,7 +34,8 @@ set tabstop=4                   " 1 tab = 4 spaces
 " Colors, layout, etc.
 set background=dark
 set cursorline                  " Highlight current line
-set number                      " Show line numbers
+set relativenumber              " Show line numbers relative to current line
+set number                      " Show line number of current line
 syntax on                       " Enable syntax highlighting
 
 " Solarized stuff
@@ -256,9 +257,9 @@ let g:ctrlp_map = "<C-P>"
 " ==============================================================================
 
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-f>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-F>"
+let g:UltiSnipsJumpBackwardTrigger="<C-B>"
 
 " ==============================================================================
 " Easy Motion
@@ -290,6 +291,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+let g:syntastic_error_symbol = '**'
+let g:syntastic_warning_symbol = "*"
 
 let g:syntastic_javascript_checkers = ['eslint']
 
