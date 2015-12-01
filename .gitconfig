@@ -2,7 +2,7 @@
     a = add
     b = branch
     c = commit
-    ll = log --pretty=format:\"%h %ad %Cblue%an %C(yellow)%s%d\" --decorate --date=relative
+    ll = log --pretty=format:\"%h %ad%x09%Cblue%an%x09%Cgreen%s%C(white)%d\" --decorate --date=relative
     o = checkout
     p = pull
     r = remote -v
