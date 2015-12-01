@@ -32,3 +32,5 @@
 [user]
 	email = tyler.rash@gmail.com
 	name = Tyler Rash
+[push]
+	default = simple
