@@ -36,4 +36,4 @@
 	email = tyler.rash@bronto.com
 	name = Tyler Rash
 [push]
-	default = matching
+	default = simple
