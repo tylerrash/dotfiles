@@ -1,5 +1,5 @@
 # prompt
-PS1='\[\e[0;36m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
+PS1='\[\e[0;36m\]\u@$(scutil --get ComputerName)\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 
 include() {
     [[ -f "$1" ]] && source "$1"
@@ -61,3 +61,6 @@ fi
 
 # powerline
 # . /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+
+export NVM_DIR="/Users/tyler.rash/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
