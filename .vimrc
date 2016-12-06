@@ -1,8 +1,20 @@
 " This must be first, because it changes other options as a side effect
 set nocompatible
 
-" Load Pathogen plugins
-execute pathogen#infect()
+" Vundle
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-fugitive'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'mileszs/ack.vim'
+
+call vundle#end()
+filetype plugin indent on
 
 " ============================================================================== 
 " General config
@@ -32,15 +44,15 @@ set shiftwidth=4                " 1 tab = 4 spaces
 set tabstop=4                   " 1 tab = 4 spaces
 
 " Colors, layout, etc.
-set background=dark
+" set background=dark
 set cursorline                  " Highlight current line
 set relativenumber              " Show line numbers relative to current line
 set number                      " Show line number of current line
 syntax on                       " Enable syntax highlighting
 
 " Solarized stuff
-colorscheme solarized
-let g:solarized_termtrans = 1
+" colorscheme solarized
+" let g:solarized_termtrans = 1
 
 " Turn off swap files
 set noswapfile
@@ -146,7 +158,7 @@ map <Leader>r :so $MYVIMRC<CR>
 map <leader>h :noh<CR>
 
 " Break line at 100 characters
-map <Leader>b 100<Bar>F<Space>i<CR>jj
+map <Leader>b :ls<CR>
 
 " Copy to system clipboard
 map <Leader>y :w !pbcopy<CR><CR>
@@ -155,11 +167,11 @@ map <Leader>y :w !pbcopy<CR><CR>
 map <Leader>j :execute '%!python -m json.tool' |
 
 " Fugitive
-map <Leader>gc :Gcommit<CR>
-map <Leader>gb :Gblame<CR>
-map <Leader>gd :Gdiff<CR>
-map <Leader>gs :Gstatus<CR>
-map <Leader>gw :Gwrite<CR>
+map <Leader>fc :Gcommit<CR>
+map <Leader>fb :Gblame<CR>
+map <Leader>fd :Gdiff<CR>
+map <Leader>fs :Gstatus<CR>
+map <Leader>fw :Gwrite<CR>
 
 " ==============================================================================
 " Remap commands
@@ -214,6 +226,7 @@ nnoremap <Down> :m+<CR>==
 " ==============================================================================
 
 :ab funciton function
+:ab unit16 uint16
 
 " ==============================================================================
 " File types
@@ -280,26 +293,6 @@ hi EasyMotionTarget2Second ctermbg=NONE ctermfg=3
 hi EasyMotionShade ctermbg=NONE ctermfg=0
 
 " ==============================================================================
-" Syntastic
-" ==============================================================================
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_error_symbol = '**'
-let g:syntastic_warning_symbol = "*"
-
-let g:syntastic_javascript_checkers = ['eslint']
-
-map <Leader>en :lnext<CR>
-map <Leader>ep :lprevious<CR>
-
-" ==============================================================================
 " Handy functions
 " ==============================================================================
 
@@ -307,3 +300,11 @@ map <Leader>ep :lprevious<CR>
 fu! FixObjectSpacing()
     :%s/\(},\)\(\n\s*\/\*\*\)/\1\r\2
 endfu
+
+" ==============================================================================
+" vim-go
+" ==============================================================================
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gg <Plug>(go-def)
+au FileType go nmap <Leader>gt <Plug>(go-test)
+au FileType go nmap <Leader>gc <Plug>(go-coverage)
