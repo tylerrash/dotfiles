@@ -48,7 +48,7 @@ set shiftwidth=4                " 1 tab = 4 spaces
 set tabstop=4                   " 1 tab = 4 spaces
 
 " Colors, layout, etc.
-" set background=dark
+set background=dark
 set cursorline                  " Highlight current line
 set relativenumber              " Show line numbers relative to current line
 set number                      " Show line number of current line
@@ -99,7 +99,6 @@ set foldmethod=syntax
 set foldtext=CustomFoldText()
 
 hi Folded cterm=NONE ctermfg=0 ctermbg=NONE
-" hi CursorLine   cterm=NONE ctermbg=20 ctermfg=white guibg=blue guifg=white
 
 " Don't screw up folds when inserting text that might affect them, until
 " leaving insert mode. Foldmethod is local to the window.
@@ -164,6 +163,7 @@ map <leader>h :noh<CR>
 
 " Break line at 100 characters
 map <Leader>b :ls<CR>
+map <Leader>b 100<Bar>F<Space>i<CR>jj
 
 " Copy to system clipboard
 map <Leader>y :w !pbcopy<CR><CR>

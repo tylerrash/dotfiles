@@ -1,5 +1,4 @@
 # prompt
-
 PS1='\[\e[0;36m\]\u@$(scutil --get ComputerName)\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 
 include() {
@@ -41,11 +40,8 @@ goog() {
 export CLICOLOR=true
 export CLICOLOR_FORCE=true
 export FIGNORE="DS_STORE:$FIGNORE"
-
 export EDITOR='vim'
-
 export GREP_OPTIONS='--exclude=*bundle*'
-
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 ### Added by the Heroku Toolbelt
@@ -57,7 +53,6 @@ export PATH=/usr/local/Cellar/ruby/2.1.4/bin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 export PATH="$HOME/.rbenv/bin:$PATH"
-
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
@@ -71,3 +66,5 @@ fi
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR="/Users/tyler/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
