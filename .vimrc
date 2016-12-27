@@ -12,6 +12,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'mileszs/ack.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'rhysd/vim-crystal'
 
 call vundle#end()
 filetype plugin indent on
@@ -51,8 +55,8 @@ set number                      " Show line number of current line
 syntax on                       " Enable syntax highlighting
 
 " Solarized stuff
-" colorscheme solarized
-" let g:solarized_termtrans = 1
+colorscheme solarized
+let g:solarized_termtrans = 1
 
 " Turn off swap files
 set noswapfile
@@ -95,6 +99,7 @@ set foldmethod=syntax
 set foldtext=CustomFoldText()
 
 hi Folded cterm=NONE ctermfg=0 ctermbg=NONE
+" hi CursorLine   cterm=NONE ctermbg=20 ctermfg=white guibg=blue guifg=white
 
 " Don't screw up folds when inserting text that might affect them, until
 " leaving insert mode. Foldmethod is local to the window.
@@ -237,6 +242,7 @@ filetype plugin on
 
 autocmd BufRead,BufNewFile *.less set filetype=css
 autocmd BufRead,BufNewFile *.ts set filetype=javascript
+autocmd BufRead,BufNewFile *.cr set filetype=crystal
 
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 autocmd Filetype css setlocal ts=4 sw=4 expandtab
@@ -244,6 +250,7 @@ autocmd Filetype html setlocal ts=4 sw=4 expandtab
 autocmd Filetype jade setlocal ts=4 sw=4 expandtab
 autocmd Filetype phtml setlocal ts=4 sw=4 expandtab
 autocmd Filetype javascript setlocal ts=4 sw=4 expandtab
+autocmd FileType crystal setlocal ts=2 sw=2 expandtab
 
 " ==============================================================================
 " NERDtree
