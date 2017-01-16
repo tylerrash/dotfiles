@@ -16,7 +16,6 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'rhysd/vim-crystal'
-Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'vim-scripts/VimClojure'
 
 call vundle#end()
