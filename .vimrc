@@ -16,6 +16,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'rhysd/vim-crystal'
+Plugin 'motus/pig.vim'
 
 call vundle#end()
 filetype plugin indent on
