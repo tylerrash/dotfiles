@@ -63,8 +63,3 @@ fi
 
 # powerline
 # . /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-export NVM_DIR="/Users/tyler/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

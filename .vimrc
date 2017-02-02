@@ -17,6 +17,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'rhysd/vim-crystal'
 Plugin 'motus/pig.vim'
+Plugin 'vim-scripts/VimClojure'
 
 call vundle#end()
 filetype plugin indent on
