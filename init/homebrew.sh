@@ -3,7 +3,7 @@
 packages=(
     'ack'
     'httpie'
-    'imagemagick'
+    'jq'
     'nodejs'
     'python'
     'tmux'
