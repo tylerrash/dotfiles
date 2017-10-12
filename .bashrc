@@ -90,5 +90,5 @@ _complete_ssh_hosts ()
 }
 complete -F _complete_ssh_hosts ssh
 
-# powerline
-# . /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+# Shell only exists after the 10th consecutive Ctrl-d
+IGNOREEOF=10
