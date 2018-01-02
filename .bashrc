@@ -21,6 +21,7 @@ alias proj='cd ~/proj'
 alias vim='vim -p '
 alias steam='wine .wine/drive_c/Program\ Files/Steam/Steam.exe'
 alias g='git'
+alias dd='deploy-dude -y'
 
 # navigation aliases
 alias ..='cd ..'
@@ -33,6 +34,8 @@ alias ma='cd ~/mail_app'
 alias p='cd ~/projects'
 
 alias serve='python -m SimpleHTTPServer'
+
+alias ports='cat ~/ports'
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
