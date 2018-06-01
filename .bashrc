@@ -93,5 +93,5 @@ _complete_ssh_hosts ()
 }
 complete -F _complete_ssh_hosts ssh
 
-# Shell only exists after the 10th consecutive Ctrl-d
+# Shell only exits after the 10th consecutive Ctrl-d
 IGNOREEOF=10

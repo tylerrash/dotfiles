@@ -7,7 +7,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'easymotion/vim-easymotion'
@@ -18,6 +17,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'rhysd/vim-crystal'
 Plugin 'motus/pig.vim'
 Plugin 'vim-scripts/VimClojure'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'aserebryakov/vim-todo-lists'
 
 call vundle#end()
 filetype plugin indent on
@@ -174,11 +175,11 @@ map <Leader>y :w !pbcopy<CR><CR>
 map <Leader>j :execute '%!python -m json.tool' |
 
 " Fugitive
-map <Leader>fc :Gcommit<CR>
-map <Leader>fb :Gblame<CR>
-map <Leader>fd :Gdiff<CR>
-map <Leader>fs :Gstatus<CR>
-map <Leader>fw :Gwrite<CR>
+map <Leader>gc :Gcommit<CR>
+map <Leader>gb :Gblame<CR>
+map <Leader>gd :Gdiff<CR>
+map <Leader>gs :Gstatus<CR>
+map <Leader>gw :Gwrite<CR>
 
 " ==============================================================================
 " Remap commands
