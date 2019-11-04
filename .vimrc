@@ -17,13 +17,9 @@ Plugin 'mileszs/ack.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
-" Plugin 'rhysd/vim-crystal'
-" Plugin 'motus/pig.vim'
 Plugin 'leafgarland/typescript-vim'
-" Plugin 'aserebryakov/vim-todo-lists'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
-"Plugin 'quramy/tsuquyomi'
 Plugin 'ycm-core/YouCompleteMe'
 
 call vundle#end()
