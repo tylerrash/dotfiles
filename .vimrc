@@ -1,4 +1,4 @@
-" This must be first, because it changes other options as a side effect
+" This must be first because it changes other options as a side effect
 set nocompatible
 
 " fzf
@@ -128,8 +128,39 @@ set statusline+=\ %m            " Modified flag
 set statusline+=%=L:\ %l/%L     " Line number
 set statusline+=\ \ C:\ %c\     " Column number
 
-hi StatusLine ctermbg=NONE ctermfg=DarkGrey cterm=bold
+hi StatusLine ctermbg=None ctermfg=Grey cterm=bold
+hi StatusLineNC ctermbg=DarkGrey ctermfg=White cterm=bold
 hi LineNr ctermbg=NONE ctermfg=DarkGrey
+highlight ColorColumn ctermbg=DarkGrey
+
+" Dim inactive windows using 'colorcolumn' setting
+" This tends to slow down redrawing, but is very useful.
+" Based on https://groups.google.com/d/msg/vim_use/IJU-Vk-QLJE/xz4hjPjCRBUJ
+" XXX: this will only work with lines containing text (i.e. not '~')
+function! s:DimInactiveWindows()
+  for i in range(1, tabpagewinnr(tabpagenr(), '$'))
+    let l:range = ""
+    if i != winnr()
+      if &wrap
+        " HACK: when wrapping lines is enabled, we use the maximum number
+        " of columns getting highlighted. This might get calculated by
+        " looking for the longest visible line and using a multiple of
+        " winwidth().
+        let l:width=256 " max
+      else
+        let l:width=winwidth(i)
+      endif
+      let l:range = join(range(1, l:width), ',')
+    endif
+    call setwinvar(i, '&colorcolumn', l:range)
+  endfor
+endfunction
+augroup DimInactiveWindows
+  au!
+  au WinEnter * call s:DimInactiveWindows()
+  au WinEnter * set cursorline
+  au WinLeave * set nocursorline
+augroup END
 
 " YouCompleteMe
 highlight YcmErrorSection guibg=Red ctermbg=Red
@@ -149,12 +180,13 @@ let mapleader = "\<Space>"
 " Reload .vimrc
 map <Leader>r :so $MYVIMRC<CR>
 
+map <Leader>l :buffers<CR>:buffer<SPACE>
+
 " Clear search result higlighting
 map <leader>h :noh<CR>
 
 " Break line at 100 characters
-map <Leader>b :ls<CR>
-map <Leader>b 100<Bar>F<Space>i<CR>jj
+map <Leader>k 100<Bar>F<Space>i<CR>jj
 
 " Copy to system clipboard
 map <Leader>y :w !pbcopy<CR><CR>
