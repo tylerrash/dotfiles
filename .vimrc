@@ -1,6 +1,9 @@
 " This must be first, because it changes other options as a side effect
 set nocompatible
 
+" fzf
+set rtp+=/usr/local/opt/fzf
+
 " Vundle
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -14,11 +17,14 @@ Plugin 'mileszs/ack.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'rhysd/vim-crystal'
-Plugin 'motus/pig.vim'
-Plugin 'vim-scripts/VimClojure'
+" Plugin 'rhysd/vim-crystal'
+" Plugin 'motus/pig.vim'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'aserebryakov/vim-todo-lists'
+" Plugin 'aserebryakov/vim-todo-lists'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'flazz/vim-colorschemes'
+"Plugin 'quramy/tsuquyomi'
+Plugin 'ycm-core/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
@@ -49,17 +55,18 @@ set si                          " Smart indent
 set expandtab                   " Use spaces instead of tabs
 set shiftwidth=4                " 1 tab = 4 spaces
 set tabstop=4                   " 1 tab = 4 spaces
+"set cino=(0                    " align function arguments
 
 " Colors, layout, etc.
 set background=dark
-set cursorline                  " Highlight current line
+" set cursorline                " Highlight current line
 set relativenumber              " Show line numbers relative to current line
 set number                      " Show line number of current line
 syntax on                       " Enable syntax highlighting
 
 " Solarized stuff
-colorscheme solarized
-let g:solarized_termtrans = 1
+" colorscheme solarized
+" let g:solarized_termtrans = 1
 
 " Turn off swap files
 set noswapfile
@@ -101,7 +108,7 @@ set foldlevel=2
 set foldmethod=syntax
 set foldtext=CustomFoldText()
 
-hi Folded cterm=NONE ctermfg=0 ctermbg=NONE
+" hi Folded cterm=NONE ctermfg=0 ctermbg=NONE
 
 " Don't screw up folds when inserting text that might affect them, until
 " leaving insert mode. Foldmethod is local to the window.
@@ -122,32 +129,17 @@ endif
 set laststatus=2                " Always show the statusline
 set statusline=\ %F             " File path
 set statusline+=\ %m            " Modified flag
-set statusline+=%h%{fugitive#statusline()}
-set statusline+=%=L:\ %l/%L   " Line number
+set statusline+=%=L:\ %l/%L     " Line number
 set statusline+=\ \ C:\ %c\     " Column number
 
-" Change status line color with mode
-function! InsertStatusLineColor(mode)
-    if a:mode == 'i'
-        hi statusline ctermfg=red ctermbg=white
-    elseif a:mode == 'r'
-        hi statusline ctermfg=blue ctermbg=white
-    else
-        hi statusline ctermfg=0 ctermbg=grey
-    endif
-endfunction
+hi StatusLine ctermbg=NONE ctermfg=DarkGrey cterm=bold
+hi LineNr ctermbg=NONE ctermfg=DarkGrey
 
-au InsertEnter * call InsertStatusLineColor(v:insertmode)
-au InsertChange * call InsertStatusLineColor(v:insertmode)
-au InsertLeave * hi statusline ctermfg=0 ctermbg=grey
-
-" Default statusline when entering Vim
-hi statusline ctermfg=0 ctermbg=grey
-
-" TabLine plug-in
-hi TabLine ctermfg=Black ctermbg=Green cterm=NONE
-hi TabLineFill ctermfg=Black ctermbg=Green cterm=NONE
-hi TabLineSel ctermfg=White ctermbg=DarkBlue cterm=NONE
+" YouCompleteMe
+highlight YcmErrorSection guibg=Red ctermbg=Red
+highlight YcmErrorSection guifg=White ctermfg=White
+highlight YcmWarningSign guibg=NONE ctermbg=NONE
+highlight YcmWarningSign guifg=Red ctermfg=Red
 
 " ==============================================================================
 " Custom leader commands
@@ -155,7 +147,7 @@ hi TabLineSel ctermfg=White ctermbg=DarkBlue cterm=NONE
 
 " TODO: should these be nnoremap?
 
-" Set leader key to ,
+" Set leader key to Space
 let mapleader = "\<Space>"
 
 " Reload .vimrc
@@ -172,7 +164,7 @@ map <Leader>b 100<Bar>F<Space>i<CR>jj
 map <Leader>y :w !pbcopy<CR><CR>
 
 " Format JSON
-map <Leader>j :execute '%!python -m json.tool' |
+" map <Leader>j :execute '%!python -m json.tool' |
 
 " Fugitive
 map <Leader>gc :Gcommit<CR>
@@ -180,6 +172,15 @@ map <Leader>gb :Gblame<CR>
 map <Leader>gd :Gdiff<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gw :Gwrite<CR>
+
+" fzf
+map <Leader>f :FZF<CR>
+
+" YouCompleteMe
+nnoremap <leader>jg :YcmCompleter GoTo<CR>
+nnoremap <leader>jd :YcmCompleter GetDoc<CR>
+nnoremap <leader>ju :YcmCompleter GoToReferences<CR>
+
 
 " ==============================================================================
 " Remap commands
@@ -204,10 +205,6 @@ nnoremap J mzJ`z
 noremap H ^
 noremap L $
 vnoremap L g_
-
-" Insert lines without entering insert mode
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
 
 " Buffer navigation
 nnoremap <S-L> :bn<CR>:redraw<CR>:ls<CR>
@@ -244,7 +241,7 @@ nnoremap <Down> :m+<CR>==
 filetype plugin on
 
 autocmd BufRead,BufNewFile *.less set filetype=css
-autocmd BufRead,BufNewFile *.ts set filetype=javascript
+autocmd BufRead,BufNewFile *.ts set filetype=typescript
 autocmd BufRead,BufNewFile *.cr set filetype=crystal
 
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
@@ -252,7 +249,8 @@ autocmd Filetype css setlocal ts=4 sw=4 expandtab
 autocmd Filetype html setlocal ts=4 sw=4 expandtab
 autocmd Filetype jade setlocal ts=4 sw=4 expandtab
 autocmd Filetype phtml setlocal ts=4 sw=4 expandtab
-autocmd Filetype javascript setlocal ts=4 sw=4 expandtab
+autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype typescript setlocal ts=2 sw=2 expandtab
 autocmd FileType crystal setlocal ts=2 sw=2 expandtab
 
 " ==============================================================================
@@ -318,3 +316,14 @@ au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gg <Plug>(go-def)
 au FileType go nmap <Leader>gt <Plug>(go-test)
 au FileType go nmap <Leader>gc <Plug>(go-coverage)
+
+" ==============================================================================
+" ack
+" ==============================================================================
+nnoremap <Leader>a :Ack<Space>
+
+" ==============================================================================
+" Typescript
+" ==============================================================================
+let g:tsuquyomi_completion_detail = 1
+autocmd FileType typescript setlocal completeopt-=menu

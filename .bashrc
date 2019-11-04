@@ -23,6 +23,7 @@ alias vim='vim -p '
 alias steam='wine .wine/drive_c/Program\ Files/Steam/Steam.exe'
 alias g='git'
 alias dd='deploy-dude -y'
+alias python=python3
 
 # navigation aliases
 alias ..='cd ..'
@@ -31,15 +32,17 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
-alias ma='cd ~/mail_app'
 alias p='cd ~/projects'
+alias ha='history | ack'
+alias ga='g ll | ack'
 
 alias serve='python -m SimpleHTTPServer'
 
 alias ports='cat ~/ports'
 
 # Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+
 
 # Better ls
 function ll { ls -AGhlp $@ | grep -v .DS_Store; }
@@ -56,6 +59,8 @@ export FIGNORE="DS_STORE:$FIGNORE"
 export EDITOR='vim'
 export GREP_OPTIONS='--exclude=*bundle*'
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+# make fzf respect .gitignore
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -68,6 +73,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$HOME/.rbenv/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/Users/tyler/Library/Python/3.7/bin
 
 # git completion
 if [ -f ~/.git-completion.bash ]; then
@@ -96,3 +102,4 @@ complete -F _complete_ssh_hosts ssh
 
 # Shell only exits after the 10th consecutive Ctrl-d
 IGNOREEOF=10
+

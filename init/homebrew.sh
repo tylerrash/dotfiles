@@ -2,10 +2,14 @@
 
 packages=(
     'ack'
+    'cmake'
+    'fzf'
     'httpie'
     'jq'
+    'neovim'
     'nodejs'
     'python'
+    'tldr'
     'tmux'
     'tree'
     'wget'

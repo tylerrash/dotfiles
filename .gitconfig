@@ -2,10 +2,11 @@
     a = add
     b = branch
     c = commit
-    ll = log --pretty=format:\"%h %ad%x09%Cblue%an%x09%Cgreen%s%C(white)%d\" --decorate --date=relative
+    ll = log --pretty=format:\"%h  %ad  %<(18)%Cblue%an %<(60,trunc) %Cgreen%s%C(white)%d\" --decorate --date=short
     lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
     lg = !"git lg1"
+    ltag = log --oneline --decorate --tags --no-walk
     o = checkout
     p = pull
     r = remote -v
@@ -16,6 +17,7 @@
     shp = stash pop
     u = branch --no-merge master
     w = whatchanged
+    release-notes = "!sh -c 'git log $(git rev-parse --abbrev-ref HEAD) --no-merges --not master | ~/release_notes' -"
 [color]
 	ui = true
 [advice]
@@ -39,3 +41,8 @@
 	default = simple
 [difftool "diffpdf"]
     cmd = diff-pdf --view \"$LOCAL\" \"$REMOTE\"
+[http]
+	sslVerify = false
+[pager]
+    diff = diff-so-fancy | less --tabs=1,5 -RFX
+    show = diff-so-fancy | less --tabs=1,5 -RFX
