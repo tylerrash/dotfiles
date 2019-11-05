@@ -30,6 +30,7 @@ filetype plugin indent on
 " General config
 " ============================================================================== 
 
+set shortmess=I                 " Disable welcome message
 set autoread                    " Auto-read a file that is changed outside
 set backspace=eol,start,indent  " Allow backspace in insert mode
 set clipboard=unnamed           " Access system clipboard
