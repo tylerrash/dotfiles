@@ -1,5 +1,5 @@
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/' | xargs
 }
 
 # prompt
@@ -8,7 +8,7 @@ if [ -n "$SSH_CLIENT"  ] || [ -n "$SSH_TTY"  ]; then
     hostnamecolor=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1}END{print 30 + (total % 6)}')
     PS1='\[\e[34m\]\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 else
-    PS1='\[\e[1;34m\]\w\[\e[m\]\[\e[0;36m\]$(parse_git_branch)\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
+    PS1='\[\e[1;34m\]\w\[\e[m\]\[\e[0;36m\] $(parse_git_branch)\[\e[m\] \[\e[1;32m\]→\[\e[m\] \[\e[1;37m\]'
 fi
 
 include() {
@@ -46,12 +46,6 @@ alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 # Better ls
 function ll { ls -AGhlp $@ | grep -v .DS_Store; }
-
-# Query Google
-goog() {
-    echo "http://google.com#q=$*"
-    open -a '/Applications/Google Chrome.app' "http://google.com#q=$*"
-}
 
 export CLICOLOR=true
 export CLICOLOR_FORCE=true
