@@ -22,6 +22,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'pangloss/vim-javascript'
+Plugin 'heavenshell/vim-jsdoc'
 
 call vundle#end()
 filetype plugin indent on
@@ -104,7 +105,7 @@ endf
 
 set foldlevel=2
 set foldmethod=syntax
-set foldtext=CustomFoldText()
+" set foldtext=CustomFoldText()
 
 " hi Folded cterm=NONE ctermfg=0 ctermbg=NONE
 
@@ -181,7 +182,6 @@ map <Leader>f :FZF<CR>
 nnoremap <leader>jg :YcmCompleter GoTo<CR>
 nnoremap <leader>jd :YcmCompleter GetDoc<CR>
 nnoremap <leader>ju :YcmCompleter GoToReferences<CR>
-
 
 " ==============================================================================
 " Remap commands
