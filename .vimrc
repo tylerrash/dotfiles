@@ -24,6 +24,11 @@ Plugin 'ycm-core/YouCompleteMe'
 Plugin 'pangloss/vim-javascript'
 Plugin 'heavenshell/vim-jsdoc'
 
+" SnipMate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -274,14 +279,13 @@ autocmd FileType crystal setlocal ts=2 sw=2 expandtab
 
 let g:ctrlp_map = "<C-P>"
 
+
 " ==============================================================================
-" UltiSnips
+" SnipMate 
 " ==============================================================================
 
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<C-F>"
-let g:UltiSnipsJumpBackwardTrigger="<C-B>"
+:imap <C-J> <Plug>snipMateNextOrTrigger
+:smap <C-J> <Plug>snipMateNextOrTrigger
 
 " ==============================================================================
 " Easy Motion
