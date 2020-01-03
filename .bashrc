@@ -96,4 +96,3 @@ complete -F _complete_ssh_hosts ssh
 
 # Shell only exits after the 10th consecutive Ctrl-d
 IGNOREEOF=10
-

@@ -33,4 +33,7 @@ done
 echo Installing cask...
 brew install caskroom/cask/brew-cask
 
+# casks:
+# vanilla
+
 echo Homebrew setup complete!

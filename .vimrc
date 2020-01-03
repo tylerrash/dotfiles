@@ -23,6 +23,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'pangloss/vim-javascript'
 Plugin 'heavenshell/vim-jsdoc'
+Plugin 'cespare/vim-toml'
 
 " SnipMate
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -162,7 +163,7 @@ map <Leader>r :so $MYVIMRC<CR>
 map <Leader>l :buffers<CR>:buffer<SPACE>
 
 " Clear search result higlighting
-map <leader>h :noh<CR>
+map <Leader>h :noh<CR>
 
 " Break line at 100 characters
 map <Leader>k 100<Bar>F<Space>i<CR>jj
@@ -184,9 +185,14 @@ map <Leader>gw :Gwrite<CR>
 map <Leader>f :FZF<CR>
 
 " YouCompleteMe
-nnoremap <leader>jg :YcmCompleter GoTo<CR>
-nnoremap <leader>jd :YcmCompleter GetDoc<CR>
-nnoremap <leader>ju :YcmCompleter GoToReferences<CR>
+nnoremap <Leader>jg :YcmCompleter GoTo<CR>
+nnoremap <Leader>jd :YcmCompleter GetDoc<CR>
+nnoremap <Leader>ju :YcmCompleter GoToReferences<CR>
+
+nnoremap <Leader>e :Sexplore<CR>
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+let g:netrw_browse_split = 4
 
 " ==============================================================================
 " Remap commands
