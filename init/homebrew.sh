@@ -3,6 +3,7 @@
 packages=(
     'ack'
     'cmake'
+    'diff-so-fancy'
     'fzf'
     'httpie'
     'jq'
