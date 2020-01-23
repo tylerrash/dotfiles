@@ -96,3 +96,7 @@ complete -F _complete_ssh_hosts ssh
 
 # Shell only exits after the 10th consecutive Ctrl-d
 IGNOREEOF=10
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh"  ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion

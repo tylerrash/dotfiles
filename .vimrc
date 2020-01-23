@@ -20,7 +20,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
-"Plugin 'ycm-core/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'pangloss/vim-javascript'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'cespare/vim-toml'
@@ -109,8 +109,8 @@ fu! CustomFoldText()
     return line . expansionStr . foldSizeStr . foldPct
 endf
 
-set foldlevel=2
-set foldmethod=syntax
+" set foldlevel=2
+" set foldmethod=syntax
 " set foldtext=CustomFoldText()
 
 " hi Folded cterm=NONE ctermfg=0 ctermbg=NONE
@@ -119,6 +119,13 @@ set foldmethod=syntax
 " leaving insert mode. Foldmethod is local to the window.
 autocmd InsertEnter * let w:last_fdm=&foldmethod | setlocal foldmethod=manual
 autocmd InsertLeave * let &l:foldmethod=w:last_fdm
+
+" Keep cursor position when switching buffers: https://www.reddit.com/r/vim/comments/7c3bfk
+if v:version >= 700
+    au BufLeave * let b:winview = winsaveview()
+    au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+endif
+
 
 " Different cursors for insert vs normal mode
 " Cursor shapes: 0 = block, 1 = vertical bar, 2 = underline
@@ -140,13 +147,16 @@ set statusline+=\ \ C:\ %c\     " Column number
 hi StatusLine ctermbg=240 ctermfg=255 cterm=bold
 hi StatusLineNC ctermbg=237 ctermfg=245 cterm=bold
 hi LineNr ctermbg=NONE ctermfg=DarkGrey
-highlight ColorColumn ctermbg=DarkGrey
+hi ColorColumn ctermbg=DarkGrey
+hi MatchParen ctermbg=128 ctermfg=White cterm=None
+
 
 " YouCompleteMe
 highlight YcmErrorSection guibg=Red ctermbg=Red
 highlight YcmErrorSection guifg=White ctermfg=White
 highlight YcmWarningSign guibg=NONE ctermbg=NONE
 highlight YcmWarningSign guifg=Red ctermfg=Red
+highlight Pmenu ctermfg=White ctermbg=DarkGrey
 
 " ==============================================================================
 " Custom leader commands
@@ -185,11 +195,12 @@ map <Leader>gw :Gwrite<CR>
 map <Leader>f :FZF<CR>
 
 " YouCompleteMe
-nnoremap <Leader>jg :YcmCompleter GoTo<CR>
-nnoremap <Leader>jd :YcmCompleter GetDoc<CR>
-nnoremap <Leader>ju :YcmCompleter GoToReferences<CR>
+nnoremap <Leader>yg :YcmCompleter GoTo<CR>
+nnoremap <Leader>yd :YcmCompleter GetDoc<CR>
+nnoremap <Leader>yu :YcmCompleter GoToReferences<CR>
+nnoremap <Leader>yr :YcmCompleter RefactorRename<SPACE>
 
-nnoremap <Leader>e :Sexplore<CR>
+nnoremap <Leader>e :Vexplore<CR>
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:netrw_browse_split = 4
@@ -338,3 +349,10 @@ nnoremap <Leader>a :Ack<Space>
 " ==============================================================================
 let g:tsuquyomi_completion_detail = 1
 autocmd FileType typescript setlocal completeopt-=menu
+
+" ==============================================================================
+" YouCompleteMe
+" ==============================================================================
+
+" Auto close preview window
+autocmd CompleteDone * pclose

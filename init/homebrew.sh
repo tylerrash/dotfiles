@@ -4,10 +4,11 @@ packages=(
     'ack'
     'cmake'
     'diff-so-fancy'
+    'fd'
     'fzf'
+    'git'
     'httpie'
     'jq'
-    'neovim'
     'nodejs'
     'python'
     'tldr'
@@ -24,15 +25,10 @@ else
 fi
 
 echo Installing Homebrew packages...
-
-for package in ${packages[@]}
-do
-    echo "Installing ${package}..."
-    brew install $package
-done
+brew install ${packages[@]}
 
 echo Installing cask...
-brew install caskroom/cask/brew-cask
+brew install homebrew/cask-cask 
 
 # casks:
 # vanilla
