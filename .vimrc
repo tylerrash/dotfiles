@@ -59,7 +59,7 @@ set ai                          " Auto-indent
 set si                          " Smart indent
 set expandtab                   " Use spaces instead of tabs
 set shiftwidth=4                " 1 tab = 4 spaces
-set tabstop=4                   " 1 tab = 4 spaces
+set softtabstop=4               " 1 tab = 4 spaces
 "set cino=(0                    " align function arguments
 
 " Colors, layout, etc.
@@ -149,7 +149,8 @@ hi StatusLineNC ctermbg=237 ctermfg=245 cterm=bold
 hi LineNr ctermbg=NONE ctermfg=DarkGrey
 hi ColorColumn ctermbg=DarkGrey
 hi MatchParen ctermbg=128 ctermfg=White cterm=None
-
+" Hide tildes on blank lines
+hi EndOfBuffer ctermfg=black ctermbg=black 
 
 " YouCompleteMe
 highlight YcmErrorSection guibg=Red ctermbg=Red

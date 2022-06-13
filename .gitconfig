@@ -35,7 +35,7 @@
     path = ~/.git-user
     path = ~/.git-jira
 [user]
-	email = tyler.rash@bronto.com
+	email = tyler@rashmail.com
 	name = Tyler Rash
 [push]
 	default = simple
@@ -46,3 +46,5 @@
 [pager]
     diff = diff-so-fancy | less --tabs=1,5 -RFX
     show = diff-so-fancy | less --tabs=1,5 -RFX
+[includeIf "gitdir:~/work/"]
+    path = ~/dotfiles/.gitconfig-doma

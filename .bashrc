@@ -8,7 +8,9 @@ if [ -n "$SSH_CLIENT"  ] || [ -n "$SSH_TTY"  ]; then
     hostnamecolor=$(hostname | od | tr ' ' '\n' | awk '{total = total + $1}END{print 30 + (total % 6)}')
     PS1='\[\e[34m\]\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 else
-    PS1='\[\e[1;34m\]\w\[\e[m\]\[\e[0;36m\]$(parse_git_branch)\[\e[m\]\[\e[1;32m\] →\[\e[m\] \[\e[1;37m\]'
+    # Without linebreaks:
+    # PS1='\[\e[1;34m\]\w\[\e[m\]\[\e[0;36m\]$(parse_git_branch)\[\e[m\]\[\e[1;32m\] →\[\e[m\] \[\e[1;37m\]'
+    PS1='\n\[\e[2;34m\]\w\[\e[m\]\[\e[2;36m\]$(parse_git_branch)\[\e[m\]\[\e[32m\]\n→\[\e[m\] \[\e[37m\]'
 fi
 
 include() {
@@ -18,12 +20,10 @@ include() {
 # aliases
 alias c='clear'
 alias grep='grep --color=auto'
-alias proj='cd ~/proj'
 alias vim='vim -p '
-alias steam='wine .wine/drive_c/Program\ Files/Steam/Steam.exe'
 alias g='git'
-alias dd='deploy-dude -y'
 alias python=python3
+alias k=kubectl
 
 # navigation aliases
 alias ..='cd ..'
@@ -36,14 +36,6 @@ alias p='cd ~/projects'
 alias ha='history | ack'
 alias ga='g ll | ack'
 
-alias serve='python -m SimpleHTTPServer'
-
-alias ports='cat ~/ports'
-
-# Lock the screen (when going AFK)
-alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
-
-
 # Better ls
 function ll { ls -AGhlp $@ | grep -v .DS_Store; }
 
@@ -55,9 +47,6 @@ export GREP_OPTIONS='--exclude=*bundle*'
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # make fzf respect .gitignore
 export FZF_DEFAULT_COMMAND='fd --type f'
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 export PATH="/usr/local/bin:$PATH"
 export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
@@ -98,5 +87,7 @@ complete -F _complete_ssh_hosts ssh
 IGNOREEOF=10
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh"  ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+
+eval "$(direnv hook bash)"
