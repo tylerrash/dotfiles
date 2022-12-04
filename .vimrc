@@ -193,7 +193,7 @@ map <Leader>gs :Gstatus<CR>
 map <Leader>gw :Gwrite<CR>
 
 " fzf
-map <Leader>f :FZF<CR>
+" map <Leader>f :FZF<CR>
 
 " YouCompleteMe
 nnoremap <Leader>yg :YcmCompleter GoTo<CR>
@@ -205,6 +205,15 @@ nnoremap <Leader>e :Vexplore<CR>
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:netrw_browse_split = 4
+
+" Insert current date
+" https://stackoverflow.com/questions/56052/best-way-to-insert-timestamp-in-vim
+command! Date :normal a<C-R>=strftime('%Y-%m-%d')<CR>
+command! DateDay :normal a<C-R>=strftime('%Y-%m-%d, %a')<CR>
+command! Time :normal a<C-R>=strftime('%R')<CR>
+nnoremap <Leader>dd :Date<SPACE><CR>
+nnoremap <Leader>ddd :DateDay<SPACE><CR>
+nnoremap <Leader>dt :Time<SPACE><CR>
 
 " ==============================================================================
 " Remap commands
@@ -249,6 +258,14 @@ nnoremap zz zA
 " Easily move lines
 nnoremap <Up> :m-2<CR>==
 nnoremap <Down> :m+<CR>==
+
+" Quick commands in insert mode
+" https://vim.fandom.com/wiki/Quick_command_in_insert_mode
+inoremap II <Esc>I 
+inoremap AA <Esc>A
+inoremap OO <Esc>O
+inoremap DD <Esc>dd
+inoremap UU <Esc>u
 
 " ==============================================================================
 " Auto-correct 
@@ -331,6 +348,18 @@ hi EasyMotionShade ctermbg=NONE ctermfg=0
 fu! FixObjectSpacing()
     :%s/\(},\)\(\n\s*\/\*\*\)/\1\r\2
 endfu
+
+" https://stackoverflow.com/questions/15906029/how-to-display-all-results-of-a-search-in-vim
+function! FindAll()
+    call inputsave()
+    let p = input('Enter pattern:')
+    call inputrestore()
+    execute 'vimgrep "'.p.'" % |copen'
+endfunction
+
+map <Leader>f :call FindAll()<CR>
+
+
 
 " ==============================================================================
 " vim-go

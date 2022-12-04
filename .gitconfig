@@ -1,17 +1,14 @@
 [alias]
-    a = add
-    b = branch
-    c = commit
+    ad = add
+    br = branch
+    cm = commit
+    co = checkout
     ll = log --pretty=format:\"%h  %ad  %<(18)%Cblue%an %<(60,trunc) %Cgreen%s%C(white)%d\" --decorate --date=short
-    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-    lg = !"git lg1"
-    ltag = log --oneline --decorate --tags --no-walk
-    o = checkout
-    p = pull
+    mr = merge
+    pl = pull
     r = remote -v
-    s = status
     sh = stash
+    st = status
     sha = stash apply
     shl = stash list
     shp = stash pop
@@ -38,7 +35,7 @@
 	email = tyler@rashmail.com
 	name = Tyler Rash
 [push]
-	default = simple
+	default = current
 [difftool "diffpdf"]
     cmd = diff-pdf --view \"$LOCAL\" \"$REMOTE\"
 [http]

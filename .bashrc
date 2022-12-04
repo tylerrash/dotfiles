@@ -56,7 +56,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$HOME/.rbenv/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:/Users/tyler/Library/Python/3.7/bin
+#export PATH=$PATH:/Users/tyler/Library/Python/3.7/bin
 
 # git completion
 if [ -f ~/.git-completion.bash ]; then
@@ -88,6 +88,6 @@ IGNOREEOF=10
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+#export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 
 eval "$(direnv hook bash)"

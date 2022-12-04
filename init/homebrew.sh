@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# https://apple.stackexchange.com/questions/193411/update-bash-to-version-4-0-on-osx
 packages=(
     'ack'
+    'bash'
+    'bash-completion@2'
     'cmake'
     'diff-so-fancy'
     'fd'
@@ -9,8 +12,6 @@ packages=(
     'git'
     'httpie'
     'jq'
-    'nodejs'
-    'python'
     'tldr'
     'tmux'
     'tree'
